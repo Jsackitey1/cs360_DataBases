@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * MeteoriteReader -Reads meteorite data from CSV and allows range queries
+ * MeteoriteReader - Reads meteorite data from CSV and allows range queries
  * on numeric attributes (mass, year, reclat, reclong).
  * 
  * Data Structures Used:
