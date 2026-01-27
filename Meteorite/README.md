@@ -139,12 +139,3 @@ Number of records with mass between 100.0 and 500.0 (inclusive): 8288
 | Range query | O(n) linear scan |
 
 ---
-
-## Files
-
-```
-hw1/
-├── MeteoriteReader.java    # Main program
-├── Meteorite_Landings.csv  # Data file (45,425 records)
-└── README.md               # This file
-```
