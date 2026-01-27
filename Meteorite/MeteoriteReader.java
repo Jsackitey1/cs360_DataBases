@@ -1,3 +1,16 @@
+
+/**
+ * @author josephsackitey
+ * 
+ * MeteoriteReader - Reads meteorite data from CSV and allows range queries
+ * on mass, year, reclat, and reclong.
+ * 
+ * Data Structures Used:
+ * - ArrayList<String[]>: Stores all CSV records for efficient iteration
+ * - HashMap<String, Integer>: Maps attribute names to column indices for O(1)
+ * lookup
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -5,15 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-/**
- * MeteoriteReader -Reads meteorite data from CSV and allows range queries
- * on numeric attributes (mass, year, reclat, reclong).
- * 
- * Data Structures Used:
- * - ArrayList<String[]>: Stores all CSV records for efficient iteration
- * - HashMap<String, Integer>: Maps attribute names to column indices for O(1)
- * lookup
- */
 public class MeteoriteReader {
 
 	// Map attribute names to their column indices in the CSV
@@ -113,7 +117,7 @@ public class MeteoriteReader {
 		String attribute;
 
 		while (true) {
-			System.out.print("Enter attribute (mass, year, reclat, reclong): ");
+			System.out.print("Enter an attribute (mass, year, reclat, reclong): ");
 			attribute = scanner.nextLine().trim().toLowerCase();
 
 			if (ATTRIBUTE_COLUMNS.containsKey(attribute)) {
