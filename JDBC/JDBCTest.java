@@ -7,9 +7,9 @@ import java.sql.*;
 
 //It only runs on the cs network.
 public class JDBCTest {
-    
+
 	//Variables
-        // Use your own username but keep the _web and s26
+	// Use your own username but keep the _web and s26
 	private static final String USERNAME = "sackjo02_web";
 	private static final String PASSWORD = ""; //do not add a password!
 	private static final String SERVER_URL = "jdbc:mysql://cray.cc.gettysburg.edu/s26_sackjo02";
@@ -59,12 +59,12 @@ public class JDBCTest {
 		try {
 			//query code here
 			Statement stmt = connection.createStatement();
-			
+
 			ResultSet result = stmt.executeQuery(query);
 			// get meta: column info etc
 			ResultSetMetaData meta = result.getMetaData();
 			int columns = meta.getColumnCount();
-			
+
 			//iterate through results (each row)
 			while(result.next()) {
 				//for each column
@@ -104,12 +104,12 @@ public class JDBCTest {
 		if(connection == null)
 			throw new IllegalStateException("No Database connection.");
 
-//		try {
-//			//prepared statement update here
-//		}
-//		catch(SQLException sqle){
-//			System.err.println(sqle.getMessage());
-//		}
+		//		try {
+		//			//prepared statement update here
+		//		}
+		//		catch(SQLException sqle){
+		//			System.err.println(sqle.getMessage());
+		//		}
 	}
 	/**
 	 * @param args
