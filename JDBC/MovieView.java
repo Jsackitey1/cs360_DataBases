@@ -1,3 +1,5 @@
+//Joseph Sackitey
+
 import java.sql.*;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -5,20 +7,20 @@ import java.util.List;
 
 public class MovieView {
 
-	// Variables - ensure these match your specific credentials if different from the example
 	private static final String USERNAME = "sackjo02_web";
 	private static final String PASSWORD = ""; // do not add a password!
 	private static final String SERVER_URL = "jdbc:mysql://cray.cc.gettysburg.edu/s26_sackjo02";
 
 	private Connection connection;
 	private Scanner input;
-
+	
+	// Constructor
 	public MovieView() {
 
 		input = new Scanner(System.in);
-
+		
+		//connect to the database
 		try {
-			// Establish connection to the Sakila database
 			connection = DriverManager.getConnection(SERVER_URL, USERNAME, PASSWORD);
 		} 
 		
@@ -81,7 +83,7 @@ public class MovieView {
 			// Join film_actor with actor table
 			String actorQuery = "SELECT a.fname, a.lname " +
 					"FROM actor a " +
-					"JOIN film_actor fa ON a.actor_id = fa.actor_id " +
+					"JOIN film_actor fa ON a.actor_id = fa.ac tor_id " +
 					"WHERE fa.film_id = ?";
 
 			PreparedStatement actorStmt = connection.prepareStatement(actorQuery);
