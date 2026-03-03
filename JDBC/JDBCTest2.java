@@ -224,7 +224,6 @@ public class JDBCTest2 {
 		test.preparedModificationTest();
 
 		test.close();
-
 	}
 
 }
