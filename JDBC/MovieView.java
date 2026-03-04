@@ -18,7 +18,6 @@ public class MovieView {
 	public MovieView() {
 
 		input = new Scanner(System.in);
-		
 		//connect to the database
 		try {
 			connection = DriverManager.getConnection(SERVER_URL, USERNAME, PASSWORD);

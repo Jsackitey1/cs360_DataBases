@@ -21,10 +21,8 @@ public class JDBCTest {
 
 		//connect to the database
 		try {
-
 			//create a connection
 			connection = DriverManager.getConnection (SERVER_URL, USERNAME, PASSWORD);
-
 		}
 		catch(SQLException sqle){
 			System.err.printf("Unable to connect to database. Message: %s\n", sqle.getMessage());
