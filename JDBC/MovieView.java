@@ -8,21 +8,21 @@ import java.util.List;
 public class MovieView {
 
 	private static final String USERNAME = "sackjo02_web";
-	private static final String PASSWORD = ""; // do not add a password!
-	private static final String SERVER_URL = "jdbc:mysql://cray.cc.gettysburg.edu/s26_sackjo02";
+	private static final String PASSWORD = "";
+	private static final String SERVER_URL = "jdbc:mysql://cray.cc.gettysburg.edu/sakila";
 
 	private Connection connection;
 	private Scanner input;
-	
+
 	// Constructor
 	public MovieView() {
 
 		input = new Scanner(System.in);
-		//connect to the database
+		// connect to the database
 		try {
 			connection = DriverManager.getConnection(SERVER_URL, USERNAME, PASSWORD);
-		} 
-		
+		}
+
 		catch (SQLException sqle) {
 			System.err.printf("Unable to connect to database. Message: %s\n", sqle.getMessage());
 			connection = null;
@@ -38,7 +38,7 @@ public class MovieView {
 			// 1. Prompt for first letter
 			System.out.print("Enter the first letter of a film name: ");
 			String letter = input.nextLine().trim();
-			
+
 			if (letter.isEmpty()) {
 				System.out.println("No letter entered. Exiting.");
 				return;
@@ -46,7 +46,7 @@ public class MovieView {
 
 			// 2. Display films starting with that letter
 			// Using prepared statement for security
-			
+
 			String filmQuery = "SELECT film_id, title FROM film WHERE title LIKE ? ORDER BY title";
 			PreparedStatement filmStmt = connection.prepareStatement(filmQuery);
 			filmStmt.setString(1, letter.charAt(0) + "%");
@@ -91,7 +91,7 @@ public class MovieView {
 
 			System.out.println("\nActors in the selected film:");
 			boolean foundActor = false;
-			
+
 			while (rsActors.next()) {
 				foundActor = true;
 				System.out.printf("- %s %s\n", rsActors.getString("fname"), rsActors.getString("lname"));
@@ -115,8 +115,10 @@ public class MovieView {
 
 	public void close() {
 		try {
-			if (connection != null) connection.close();
-			if (input != null) input.close();
+			if (connection != null)
+				connection.close();
+			if (input != null)
+				input.close();
 		} catch (SQLException sqle) {
 			System.err.println(sqle.getMessage());
 		}
