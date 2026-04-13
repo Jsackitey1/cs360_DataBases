@@ -153,7 +153,7 @@ $incoming_challenges = $c_stmt->get_result();
                     </td>
                     <td><?php echo ucfirst($history['status']); ?></td>
                 </tr>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
         </table>
     <?php else: ?>
         <p>No completed games yet.</p>

@@ -1,7 +1,4 @@
 Project: Connect 4 Web Application (Phase 1: Lobby)
-Student: Joseph Sackitey
-Course: CS 360 - Database Systems
-Due Date: Tuesday, April 14, 2026
 
 --- OVERVIEW ---
 This is a turn-based implementation of Connect 4. Players can register, log in, 
@@ -53,7 +50,6 @@ CREATE TABLE games (
 
 --- INITIAL DATA & PERMISSIONS ---
 GRANT SELECT, INSERT, UPDATE, DELETE ON s26_sackjo02.* TO sackjo02_web;
-FLUSH PRIVILEGES;
 
 --- FILES INCLUDED ---
 - lobby.php: Main navigation, challenge management, and game lists.
@@ -61,7 +57,7 @@ FLUSH PRIVILEGES;
 - accept_challenge.php: Logic to initialize a new game match.
 - db_connect.php: Shared database connection configuration.
 - register.php / login.php / logout.php: Authentication system.
-- grant permission to sackjo02_web to access the users table
+- decline_challenge.php: Logic to decline a challenge.
 
 
 - Set permission for the folder

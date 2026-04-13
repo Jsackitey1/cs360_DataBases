@@ -37,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <h2>Login to Web App</h2>
+    <h2>Login to Connect 4</h2>
 
     <?php if ($error): ?>
-            <p style="color: red;"><?php echo $error; ?></p>
+        <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>
 
     <form method="POST" action="login.php">
