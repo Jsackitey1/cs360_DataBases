@@ -1,7 +1,23 @@
-https://cs.gettysburg.edu/~sackjo02/webApp/register.php
+Project: Connect 4 Web Application (Phase 1: Lobby)
+Student: Joseph Sackitey
+Course: CS 360 - Database Systems
+Due Date: Tuesday, April 14, 2026
 
-- SQL command used to create the users table
+--- OVERVIEW ---
+This is a turn-based implementation of Connect 4. Players can register, log in, 
+and challenge other users from a central lobby. The lobby tracks pending 
+challenges, active games (with turn indicators), and match history.
 
+The game board is represented as a 42-character string in the database, 
+mapping to a 7-column by 6-row grid. Turns are managed via a current_turn_id
+system to ensure only one player can move at a time.
+
+--- WEB APP URL ---
+https://cs.gettysburg.edu/~sackjo02/lobbyGame/lobby.php
+
+--- DATABASE SCHEMA ---
+
+-- Existing Users Table
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -10,8 +26,7 @@ CREATE TABLE users (
     UNIQUE (username)
 );
 
--- 1. Challenges: Tracks invites between players
-
+-- Challenges Table
 CREATE TABLE challenges (
     id INT NOT NULL AUTO_INCREMENT,
     challenger_id INT NOT NULL,
@@ -22,8 +37,7 @@ CREATE TABLE challenges (
     FOREIGN KEY (challenged_id) REFERENCES users(id)
 );
 
--- 2. Games: Tracks active matches
-
+-- Games Table
 CREATE TABLE games (
     game_id INT NOT NULL AUTO_INCREMENT,
     player1_id INT NOT NULL,
@@ -32,14 +46,23 @@ CREATE TABLE games (
     board_state VARCHAR(42) DEFAULT '000000000000000000000000000000000000000000', 
     status ENUM('active', 'completed', 'forfeited') DEFAULT 'active',
     winner_id INT DEFAULT NULL,
-    PRIMARY KEY (game_id)
+    PRIMARY KEY (game_id),
+    FOREIGN KEY (player1_id) REFERENCES users(id),
+    FOREIGN KEY (player2_id) REFERENCES users(id)
 );
 
-- Note: The board_state is stored as a 42-character string (7 columns × 6 rows). 0 is empty, 1 is Player 1, 2 is Player 2.
+--- INITIAL DATA & PERMISSIONS ---
+GRANT SELECT, INSERT, UPDATE, DELETE ON s26_sackjo02.* TO sackjo02_web;
+FLUSH PRIVILEGES;
 
+--- FILES INCLUDED ---
+- lobby.php: Main navigation, challenge management, and game lists.
+- game.php: Visual draft of the 7x6 Connect 4 board grid.
+- accept_challenge.php: Logic to initialize a new game match.
+- db_connect.php: Shared database connection configuration.
+- register.php / login.php / logout.php: Authentication system.
 - grant permission to sackjo02_web to access the users table
 
-grant select, insert on users to sackjo02_web;
 
 - Set permission for the folder
 chmod 755 webApp

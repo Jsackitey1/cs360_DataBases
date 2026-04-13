@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
-    $sql = "SELECT username FROM users WHERE username = ? AND password = SHA2(?, 256)";
+    $sql = "SELECT id, username FROM users WHERE username = ? AND password = SHA2(?, 256)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $user, $pass);
@@ -16,10 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
         $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $user;
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['user_id'] = $row['id'];
 
-        header("Location: welcome.php");
+        header("Location: lobby.php");
         exit;
     } else {
         $error = "Invalid username or password.";
@@ -38,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Login to Web App</h2>
 
     <?php if ($error): ?>
-        <p style="color: red;"><?php echo $error; ?></p>
+            <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>
 
     <form method="POST" action="login.php">
