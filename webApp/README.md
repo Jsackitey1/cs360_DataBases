@@ -1,3 +1,8 @@
+# Web Authentication Application
+
+A simple PHP web application featuring user registration, secure login, and session management. It manages user credentials in a MySQL backend and provides a personalized dashboard upon successful authentication.
+
+## Link
 https://cs.gettysburg.edu/~sackjo02/webApp/register.php
 
 - SQL command used to create the users table
