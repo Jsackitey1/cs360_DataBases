@@ -10,11 +10,11 @@ mapping to a 7-column by 6-row grid. Turns are managed via a current_turn_id
 system to ensure only one player can move at a time.
 
 --- WEB APP URL ---
-https://cs.gettysburg.edu/~sackjo02/lobbyGame/lobby.php
+https://cs.gettysburg.edu/~sackjo02/clobbyGame/lobby.php
 
 --- DATABASE SCHEMA ---
 
--- Existing Users Table
+-- Used Existing Users Table
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -59,9 +59,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON s26_sackjo02.* TO sackjo02_web;
 - register.php / login.php / logout.php: Authentication system.
 - decline_challenge.php: Logic to decline a challenge.
 
-
 - Set permission for the folder
-chmod 755 webApp
+chmod 755 lobbyGame
 
 - Set permission for the files inside the folder
 chmod 644 *.php
