@@ -8,6 +8,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
+
 if (isset($_GET['id'])) {
     $challenge_id = $_GET['id'];
     $my_id = $_SESSION['user_id'];

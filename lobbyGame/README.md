@@ -1,4 +1,4 @@
-Project: Connect 4 Web Application (Phase 1: Lobby)
+Project: Connect 4 Web Application
 
 --- OVERVIEW ---
 This is a turn-based implementation of Connect 4. Players can register, log in, 
@@ -12,9 +12,18 @@ system to ensure only one player can move at a time.
 --- WEB APP URL ---
 https://cs.gettysburg.edu/~sackjo02/clobbyGame/lobby.php
 
---- DATABASE SCHEMA ---
+## 2. Instructions for Playing
+- **Lobby:** Log in and challenge a player from the "All Players" list or accept an incoming challenge.
+- **Making Moves:** Once a game is active, click the arrow (↓) above any of the 7 columns to drop your disc.
+- **Gravity:** Discs will automatically fall to the lowest available row in the selected column.
+- **Turn Management:** The game enforces turn-based play. You can only move when the status shows "Your Turn."
+- **Winning:** The game automatically detects four-in-a-row (horizontal, vertical, or diagonal). When a win is detected, the game ends, and the result is posted to the lobby history.
+- **Forfeiting:** If you wish to end a game early, click the "Forfeit Game" button. The win will be awarded to your opponent.
 
--- Used Existing Users Table
+## 3. Database Schema
+
+```sql
+-- Users Table (Authentication)
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -23,7 +32,7 @@ CREATE TABLE users (
     UNIQUE (username)
 );
 
--- Challenges Table
+-- Challenges Table (Matchmaking)
 CREATE TABLE challenges (
     id INT NOT NULL AUTO_INCREMENT,
     challenger_id INT NOT NULL,
@@ -34,7 +43,7 @@ CREATE TABLE challenges (
     FOREIGN KEY (challenged_id) REFERENCES users(id)
 );
 
--- Games Table
+-- Games Table (State & Logic)
 CREATE TABLE games (
     game_id INT NOT NULL AUTO_INCREMENT,
     player1_id INT NOT NULL,

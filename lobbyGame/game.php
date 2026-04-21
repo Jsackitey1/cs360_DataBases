@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+
 $game_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $my_id = $_SESSION['user_id'];
 

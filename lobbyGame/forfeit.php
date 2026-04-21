@@ -6,6 +6,7 @@ if (!isset($_SESSION['loggedin'])) {
     die("Not logged in");
 }
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $game_id = isset($_POST['game_id']) ? intval($_POST['game_id']) : 0;
     $my_id = $_SESSION['user_id'];
